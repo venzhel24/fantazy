@@ -1,0 +1,13 @@
+    <div class="parentHeaderDiv" th:fragment="header">
+        <div class = "childHeaderDiv">
+            <form id="logoutForm" method="POST" th:action="@{/logout}">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+        <a id = "myinline" href="/" class="buttons">Home</a>
+        <a id = "myinline" href="/races" class="buttons">races</a>
+        <a id = "myinline" href="/sportsmen" class="buttons">sportsmen</a>
+        <a sec:authorize ="!isAuthenticated()" id = "myinline" href="/login" class="buttons">login</a>
+        <a th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" id = "myinline" href="/admin/upload" class="buttons">upload</a>
+        <a sec:authorize ="isAuthenticated()" id = "myinline" onclick="document.forms['logoutForm'].submit()" class="buttons">logout</a>
+        </div>
+    </div>

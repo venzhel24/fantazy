@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>File Upload Form</title>
+    <link th:href="@{/css/mystyle.css}" rel="stylesheet" />
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+    <link th:href="@{/css/backgrounds.css}" rel="stylesheet" />
+</head>
+<body>
+<header th:insert="~{fragments/header.html :: header}"></header>
+<div>
+<div class="bgPadding">
+    <h2>Upload a PDF file</h2>
+<form method="POST" action="/admin/upload" enctype="multipart/form-data">
+    <input type="file" name="file"><br><br>
+    <input type="submit" value="Upload">
+</form>
+
+<p th:text="${message}"></p>
+</div>
+</div>
+</body>
+</html>

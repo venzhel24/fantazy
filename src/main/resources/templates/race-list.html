@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html class="fans" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Races</title>
+    <link th:href="@{/css/mystyle.css}" rel="stylesheet" />
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+    <link th:href="@{/css/backgrounds.css}" rel="stylesheet" />
+</head>
+<body>
+<header th:insert="~{fragments/header.html :: header}"></header>
+<div th:switch="${races}">
+    <h2 th:case="null">No races found!</h2>
+    <div class="parrent">
+        <div class="block" th:case="*">
+            <div class="header-border">
+                <h3>Races</h3>
+            </div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>race type</th>
+                    <th>city</th>
+                    <th>year</th>
+                    <th>distance</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="race : ${races}">
+                    <td th:text="${race.id}"></td>
+                    <td th:text="${race.raceType}"></td>
+                    <td th:text="${race.tournament.city}"></td>
+                    <td th:text="${race.tournament.year}"></td>
+                    <td th:text="${race.distance}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <p><a class="green" href="/">home</a></p>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

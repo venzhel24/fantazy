@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html class = "body_back" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+  <meta charset="UTF-8">
+  <title>Athletes</title>
+  <link th:href="@{/css/mystyle.css}" rel="stylesheet" />
+  <link th:href="@{/css/header.css}" rel="stylesheet" />
+  <link th:href="@{/css/backgrounds.css}" rel="stylesheet" />
+</head>
+<body>
+<header th:insert="~{fragments/header.html :: header}"></header>
+<div class="bgPadding" th:switch="${sportsmen}">
+  <h2 th:case="null">No athletes found!</h2>
+  <div th:case="*">
+    <div class="header-border">
+      <h3>Athletes</h3>
+    </div>
+    <table>
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Country</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="sportsman : ${sportsmen}">
+        <td th:text="${sportsman.id}"></td>
+        <td th:text="${sportsman.name}"></td>
+        <td th:text="${sportsman.country}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>
